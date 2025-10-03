@@ -13,20 +13,20 @@ int main(){
 
     string invertido = x;
 
-    reverse( invertido.begin(),invertido.end())
+    reverse( invertido.begin(),invertido.end());
 
-    if x == invertido{
+    if (x == invertido) {
         salida = true;
+        cout<<"Número ingresado: "<< x << endl;
+        cout<<"Palindromo: "<< boolalpha << salida << endl;
     }
-    else{
-        salida=false;
+
+
+    else {
+        salida = false;
+        cout<<"Número ingresado: "<< x << endl;
+        cout<<"Palindromo: "<< boolalpha << salida << endl;
     }
-return 0;
 
-
-
-    
-    
-
-
+    return 0;
 }
