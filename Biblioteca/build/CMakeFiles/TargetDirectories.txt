@@ -1,0 +1,3 @@
+/workspaces/entregascorte2/Biblioteca/build/CMakeFiles/Biblioteca.dir
+/workspaces/entregascorte2/Biblioteca/build/CMakeFiles/edit_cache.dir
+/workspaces/entregascorte2/Biblioteca/build/CMakeFiles/rebuild_cache.dir
