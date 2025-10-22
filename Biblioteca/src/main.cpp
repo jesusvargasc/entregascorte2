@@ -1,47 +1,74 @@
+#include <iostream>
+#include <limits>
 #include "Biblioteca.h"
 #include "Libro.h"
-#include <iostream>
+using namespace std;
 
-
-int main() {
-Biblioteca b;
-
-
-
-Libro l1("Cien Años de Soledad", "Gabriel García Márquez", "978-84-376-0494-7");
-Libro l2("Don Quijote de la Mancha", "Miguel de Cervantes", "978-84-376-0495-4");
-Libro l3("El Aleph", "Jorge Luis Borges", "978-84-376-0496-1");
-
-
-b.agregarLibro(l1);
-b.agregarLibro(l2);
-b.agregarLibro(l3);
-
-
-
-b.mostrarLibrosDisponibles();
-
-
-
-std::cout << "\nBuscando 'El Aleph'...\n";
-const Libro* encontrado = b.buscarPorTitulo("El Aleph");
-if (encontrado)
-encontrado->mostrarInfo();
-else
-std::cout << "Libro no encontrado.\n";
-
-std::cout << "\nEliminando libro con ISBN 978-84-376-0495-4...\n";
-if (b.eliminarLibroPorISBN("978-84-376-0495-4")) {
-std::cout << "Libro eliminado correctamente.\n";
-} else {
-std::cout << "No se encontró el libro.\n";
+void mostrarMenu() {
+    cout << "\n===== MENU BIBLIOTECA =====\n";
+    cout << "1. Agregar libro\n";
+    cout << "2. Eliminar libro\n";
+    cout << "3. Buscar libro por titulo\n";
+    cout << "4. Mostrar todos los libros\n";
+    cout << "5. Salir\n";
+    cout << "===========================\n";
+    cout << "Seleccione una opcion: ";
 }
 
+int main() {
+    Biblioteca miBiblioteca;
+    int opcion;
 
+    do {
+        mostrarMenu();
+        cin >> opcion;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
-std::cout << "\nDespués de eliminar:\n";
-b.mostrarLibrosDisponibles();
+        switch (opcion) {
+        case 1: {
+            string titulo, autor, isbn;
+            cout << "\nIngrese el titulo del libro: ";
+            getline(cin, titulo);
+            cout << "Ingrese el autor del libro: ";
+            getline(cin, autor);
+            cout << "Ingrese el ISBN del libro: ";
+            getline(cin, isbn);
 
+            Libro nuevo(titulo, autor, isbn);
+            miBiblioteca.agregarLibro(nuevo);
+            break;
+        }
 
-return 0;
+        case 2: {
+            string isbn;
+            cout << "\nIngrese el ISBN del libro a eliminar: ";
+            getline(cin, isbn);
+            miBiblioteca.eliminarLibro(isbn);
+            break;
+        }
+
+        case 3: {
+            string titulo;
+            cout << "\nIngrese el titulo a buscar: ";
+            getline(cin, titulo);
+            miBiblioteca.buscarPorTitulo(titulo);
+            break;
+        }
+
+        case 4:
+            miBiblioteca.mostrarLibros();
+            break;
+
+        case 5:
+            cout << "\nSaliendo del programa... ¡Hasta luego!\n";
+            break;
+
+        default:
+            cout << "\nOpcion no valida. Intente de nuevo.\n";
+            break;
+        }
+
+    } while (opcion != 5);
+
+    return 0;
 }
