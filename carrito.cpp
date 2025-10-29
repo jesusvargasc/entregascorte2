@@ -13,6 +13,7 @@ public:
     auto stock;
 }
 
+class CarritoCompras(){
  void agregar(){ 
     cout<<"Desea agregar un producto?(si/no): "<<endl;
     cin>>s;
@@ -32,6 +33,7 @@ public:
 
         
     }
+    void eliminar(){
 
 
     void calcular(){
@@ -59,8 +61,6 @@ Public:
     }
 
 }
-class CarritoCompras(){
 
-}
 
    
