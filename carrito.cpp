@@ -84,6 +84,7 @@ Public:
 }
 class Usuario(){
 public:
+}
     
 
 
