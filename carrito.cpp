@@ -6,14 +6,16 @@ using namespace std;
 class producto(){
 
 public:
-    vector<vector<string>> productos;
-    string s;
     string nombre;
     int precios;
     auto stock;
 }
 
 class CarritoCompras(){
+public:
+vector<vector<string>> productos;
+string s;
+
  void agregar(){ 
     cout<<"Desea agregar un producto?(si/no): "<<endl;
     cin>>s;
@@ -33,10 +35,29 @@ class CarritoCompras(){
 
         
     }
+ }
     void eliminar(){
+        string nombreEliminar;
+        cout << "Ingrese el nombre del producto a eliminar: ";
+        cin >> nombreEliminar;
+
+        for (int i = 0; i < productos.size(); i++) {
+            if (productos[i][0] == nombreEliminar) {
+                productos.erase(productos.begin() + i);
+                cout << "Producto eliminado: " << nombreEliminar << endl;
+                return;
+            }
+        }
+        cout << "Producto no encontrado: " << nombreEliminar << endl;
+    }
 
 
-    void calcular(){
+    void CalcularTotaldeCompra(){
+        int total = 0;
+        for (int i = 0; i < productos.size(); i++) {
+            total += stoi(productos[i][1]);
+        }
+        cout << "El total de la compra es: " << total << endl;
     }
 
 }
@@ -61,6 +82,9 @@ Public:
     }
 
 }
+class Usuario(){
+public:
+    
 
 
    
